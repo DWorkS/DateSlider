@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.googlecode.android.widgets.DateSlider.SliderContainer
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/com.googlecode.android.widgets.DateSlider"
-    android:id="@+id/dateSliderContainer"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/dev.dworks.widgets.DateSlider"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
-    <com.googlecode.android.widgets.DateSlider.ScrollLayout
-        style="@style/Scroller"
-        app:labelerClass="com.googlecode.android.widgets.DateSlider.labeler.MonthYearLabeler"
-        app:labelerFormat="%tb %tY"
-        app:childWidth="90dp"
-        />
-    <com.googlecode.android.widgets.DateSlider.ScrollLayout
-        style="@style/Scroller"
-        app:labelerClass="com.googlecode.android.widgets.DateSlider.labeler.DayDateLabeler"
-        app:labelerFormat="%td %ta"
-        app:childWidth="45dp"
-        />
-    <include layout="@layout/dialogbuttons"/>
-</com.googlecode.android.widgets.DateSlider.SliderContainer>
+    android:orientation="vertical" >
+
+    <include layout="@layout/dialogtitle" />
+
+    <dev.dworks.widgets.DateSlider.SliderContainer
+        android:id="@+id/dateSliderContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:showDividers="middle" >
+
+        <dev.dworks.widgets.DateSlider.ScrollLayout
+            style="@style/Scroller"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:childWidth="90dp"
+            app:labelerClass="dev.dworks.widgets.DateSlider.labeler.MonthYearLabeler"
+            app:labelerFormat="%tb %tY" />
+
+        <dev.dworks.widgets.DateSlider.ScrollLayout
+            style="@style/Scroller"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:childWidth="45dp"
+            app:labelerClass="dev.dworks.widgets.DateSlider.labeler.DayDateLabeler"
+            app:labelerFormat="%td %ta" />
+
+        <include layout="@layout/dialogbuttons" />
+    </dev.dworks.widgets.DateSlider.SliderContainer>
+
+</LinearLayout>

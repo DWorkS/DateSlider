@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<dev.dworks.widgets.DateSlider.timeview.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dateSliderButLayout"
-    android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:minHeight="48dp"
+    android:dividerPadding="12dp"
+    android:divider="@drawable/list_divider_default"
+    android:showDividers="middle" >
+
     <Button
         android:id="@+id/dateSliderOkButton"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:gravity="center"
         android:layout_weight="1"
-        android:text="Set"/>
-    <Button android:id="@+id/dateSliderCancelButton"
+        android:background="@drawable/list_selector_holo_light"
+        android:gravity="center"
+        android:paddingLeft="4dp"
+        android:text="Set" />
+
+    <Button
+        android:id="@+id/dateSliderCancelButton"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:gravity="center"
         android:layout_weight="1"
-        android:text="Cancel"/>
-</LinearLayout>
+        android:background="@drawable/list_selector_holo_light"
+        android:gravity="center"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Cancel" />
+
+</dev.dworks.widgets.DateSlider.timeview.LinearLayout>

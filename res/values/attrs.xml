@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ScrollLayout">
-        <attr name="labelerClass" format="string"/>
-        <attr name="labelerFormat" format="string"/>
-        <attr name="childWidth" format="dimension"/>
-        <attr name="childHeight" format="dimension"/>
+
+    <declare-styleable name="DateSlider">
+        <attr name="labelerClass" format="string" />
+        <attr name="labelerFormat" format="string" />
+        <attr name="childWidth" format="dimension" />
+        <attr name="childHeight" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="LinearLayout">
+        <attr name="android:divider" />
+        <attr name="android:dividerPadding" />
+        <attr name="android:showDividers" />
+        <attr name="android:dividerPadding" />
+        <attr name="android:showDividers" />
+    </declare-styleable>
+
 </resources>

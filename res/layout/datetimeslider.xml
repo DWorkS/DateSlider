@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.googlecode.android.widgets.DateSlider.SliderContainer
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/com.googlecode.android.widgets.DateSlider"
+<dev.dworks.widgets.DateSlider.SliderContainer xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/dev.dworks.widgets.DateSlider"
     android:id="@+id/dateSliderContainer"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <com.googlecode.android.widgets.DateSlider.ScrollLayout
+    android:layout_height="fill_parent"
+    android:showDividers="middle" >
+
+    <dev.dworks.widgets.DateSlider.ScrollLayout
         style="@style/Scroller"
-        app:labelerClass="com.googlecode.android.widgets.DateSlider.labeler.MonthYearLabeler"
-        app:labelerFormat="%tb %tY"
-        app:childWidth="180dp"/>
-    <com.googlecode.android.widgets.DateSlider.ScrollLayout
+        app:childWidth="180dp"
+        app:labelerClass="dev.dworks.widgets.DateSlider.labeler.MonthYearLabeler"
+        app:labelerFormat="%tb %tY" />
+
+    <dev.dworks.widgets.DateSlider.ScrollLayout
         style="@style/Scroller"
-        app:labelerClass="com.googlecode.android.widgets.DateSlider.labeler.DayDateLabeler"
-        app:labelerFormat="%td %ta"
-        app:childWidth="120dp"/>
-    <com.googlecode.android.widgets.DateSlider.ScrollLayout
+        app:childWidth="120dp"
+        app:labelerClass="dev.dworks.widgets.DateSlider.labeler.DayDateLabeler"
+        app:labelerFormat="%td %ta" />
+
+    <dev.dworks.widgets.DateSlider.ScrollLayout
         style="@style/Scroller"
-        app:labelerClass="com.googlecode.android.widgets.DateSlider.labeler.TimeLabeler"
-        app:labelerFormat="%tR"
-        app:childWidth="80dp"/>
-    <include layout="@layout/dialogbuttons"/>
-</com.googlecode.android.widgets.DateSlider.SliderContainer>
+        app:childWidth="80dp"
+        app:labelerClass="dev.dworks.widgets.DateSlider.labeler.TimeLabeler"
+        app:labelerFormat="%tR" />
+
+    <include layout="@layout/dialogbuttons" />
+
+</dev.dworks.widgets.DateSlider.SliderContainer>
