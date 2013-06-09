@@ -111,11 +111,11 @@ public class DateSliderFragment extends DialogFragment {
         if (minTime!=null) mContainer.setMinTime(minTime);
         if (maxTime!=null) mContainer.setMaxTime(maxTime);
 
-        Button okButton = (Button) root.findViewById(R.id.dateSliderOkButton);
-        okButton.setOnClickListener(okButtonClickListener);
+        //Button okButton = (Button) root.findViewById(R.id.dateSliderOkButton);
+        //okButton.setOnClickListener(okButtonClickListener);
 
-        Button cancelButton = (Button) root.findViewById(R.id.dateSliderCancelButton);
-        cancelButton.setOnClickListener(cancelButtonClickListener);
+        //Button cancelButton = (Button) root.findViewById(R.id.dateSliderCancelButton);
+        //cancelButton.setOnClickListener(cancelButtonClickListener);
 	}
 
 	public void setTime(Calendar c) {

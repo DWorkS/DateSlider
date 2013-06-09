@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import dev.dworks.widgets.DateSlider.TimeObject;
@@ -52,7 +53,7 @@ public class WeekLabeler extends Labeler {
      * create our customized TimeTextView and return it
      */
     public TimeView createView(Context context, boolean isCenterView) {
-        return new CustomTimeTextView(context, isCenterView, 25);
+        return new CustomTimeTextView(context, isCenterView, null);
     }
 
     /**
@@ -60,7 +61,7 @@ public class WeekLabeler extends Labeler {
      */
     private static class CustomTimeTextView extends TimeTextView {
 
-        public CustomTimeTextView(Context context, boolean isCenterView, int textSize) {
+        public CustomTimeTextView(Context context, boolean isCenterView, Bundle textSize) {
             super(context, isCenterView, textSize);
         }
 
@@ -69,10 +70,10 @@ public class WeekLabeler extends Labeler {
          * serif font and semi-transparent white background for the centerView... and shadow!!!
          */
         @Override
-        protected void setupView(boolean isCenterView, int textSize) {
+        protected void setupView(boolean isCenterView, Bundle textSize) {
             setGravity(Gravity.CENTER);
             setTextColor(0xFF883333);
-            setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
+            setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize.getInt(Util.PRIMARY_TEXT_SIZE));
             setTypeface(Typeface.SERIF);
             if (isCenterView) {
                 setTypeface(Typeface.create(Typeface.SERIF, Typeface.BOLD));

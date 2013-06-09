@@ -167,14 +167,79 @@ static final int DATETIMESELECTOR_ID = 5;
     };
 
     public void showDialogFragment(int id) {
+    	
+        Calendar mInitialTime = Calendar.getInstance();
+        Calendar minTime = null;
+        Calendar maxTime = null;
+        int minuteInterval = 1;
+        int mReference = -1;
+        
+        switch (id) {
+        case DEFAULTDATESELECTOR_ID:
+        	mReference = R.layout.defaultdateslider;
+        	break;
+        case DEFAULTDATESELECTOR_WITHLIMIT_ID:
+        	mReference = R.layout.defaultdateslider;
+        	minTime = mInitialTime;
+        	maxTime = mInitialTime;
+        	maxTime.add(Calendar.DAY_OF_MONTH, 14);
+            break;
+        case ALTERNATIVEDATESELECTOR_ID:
+        	mReference = R.layout.altdateslider;
+        	minTime = mInitialTime;
+            break;
+        case CUSTOMDATESELECTOR_ID:
+        	mReference = R.layout.customdateslider;
+        	break;
+        case MONTHYEARDATESELECTOR_ID:
+        	mReference = R.layout.monthyeardateslider;
+        	break;
+        case TIMESELECTOR_ID:
+        	mReference = R.layout.timeslider;
+        	minuteInterval = 15;
+        	break;
+        case TIMESELECTOR_WITHLIMIT_ID:
+        	mReference = R.layout.timeslider;
+        	minTime = mInitialTime;
+        	minTime.add(Calendar.HOUR, -2);
+        	maxTime = mInitialTime;
+        	minuteInterval = 5;
+        	break;
+        case DATETIMESELECTOR_ID:
+        	mReference = R.layout.datetimeslider;
+        	break;
+        }
         // this method is called after invoking 'showDialog' for the first time
         // here we initiate the corresponding DateSlideSelector and return the dialog to its caller
-        
-        DateSliderFragment DateSliderFragment = new DateSliderFragment(this, id);
-        DateSliderFragment.show(getSupportFragmentManager(), "");
+        PickerBuilder pickerBuilder = new PickerBuilder()
+	        .setFragmentManager(getSupportFragmentManager())
+	        .setStyleResId(R.style.PickersDialogFragment)
+	        .setReference(mReference)
+	        .setInitialTime(mInitialTime)
+	        .setMinTime(minTime)
+	        .setMaxTime(maxTime)
+	        .setMinuteInterval(minuteInterval);
+
+        pickerBuilder.show();
+/*    	if(id == DEFAULTDATESELECTOR_ID){
+            PickerDialogFragment DateSliderFragment =
+            		PickerDialogFragment.newInstance(R.layout.defaultdateslider, -1, Calendar.getInstance(), null, null, 1);
+            DateSliderFragment.show(getSupportFragmentManager(), "");
+
+            PickerBuilder pickerBuilder = new PickerBuilder()
+	            .setFragmentManager(getSupportFragmentManager())
+	            .setReference(R.layout.defaultdateslider)
+	            .setInitialTime(Calendar.getInstance());
+            	//.setStyleResId(R.style.BetterPickersDialogFragment);
+            pickerBuilder.show();
+    	}
+    	else{
+            DateSliderFragment DateSliderFragment = new DateSliderFragment(this, id);
+            DateSliderFragment.show(getSupportFragmentManager(), "");	
+    	}*/
     }
     
-    public static class DateSliderFragment extends DialogFragment{
+    /*public static class DateSliderFragment extends DialogFragment{
     	
     	Context context;
     	int id;
@@ -198,7 +263,7 @@ static final int DATETIMESELECTOR_ID = 5;
             final Calendar c = Calendar.getInstance();
             switch (id) {
             case DEFAULTDATESELECTOR_ID:
-                return new DefaultDateSlider(context, mDateSetListener,c);
+                return new DefaultDateSlider(context, mDateSetListener, c);
             case DEFAULTDATESELECTOR_WITHLIMIT_ID:
             	final Calendar maxTime = Calendar.getInstance();
             	maxTime.add(Calendar.DAY_OF_MONTH, 14);
@@ -220,5 +285,5 @@ static final int DATETIMESELECTOR_ID = 5;
             }
 			return null;
     	}
-    }
+    }*/
 }

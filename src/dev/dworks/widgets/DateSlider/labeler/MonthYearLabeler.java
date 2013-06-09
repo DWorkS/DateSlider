@@ -1,6 +1,8 @@
 package dev.dworks.widgets.DateSlider.labeler;
 
 import android.content.Context;
+import android.os.Bundle;
+import dev.dworks.widgets.DateSlider.timeview.TextParams;
 import dev.dworks.widgets.DateSlider.timeview.TimeLayoutView;
 import dev.dworks.widgets.DateSlider.timeview.TimeView;
 
@@ -18,9 +20,10 @@ public class MonthYearLabeler extends MonthLabeler {
     public MonthYearLabeler(String formatString) {
         super(formatString);
     }
-
+    
     @Override
-    public TimeView createView(Context context, boolean isCenterView) {
-        return new TimeLayoutView(context, isCenterView, 25, 8, 0.95f);
+    public TimeView createView(Context context, boolean isCenterView, Bundle bundle) {
+        return new TimeLayoutView(context, isCenterView, bundle);
+        		//25, 8, 0.95f);
     }
 }

@@ -2,10 +2,12 @@ package dev.dworks.widgets.DateSlider.timeview;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.TextView;
 import dev.dworks.widgets.DateSlider.TimeObject;
+import dev.dworks.widgets.DateSlider.labeler.Util;
 
 /**
  * This is a simple implementation of a TimeView which is implemented
@@ -23,7 +25,7 @@ public class TimeTextView extends TextView implements TimeView {
      * @param isCenterView true if the element is the centered view in the ScrollLayout
      * @param textSize text size in dps
      */
-    public TimeTextView(Context context, boolean isCenterView, int textSize) {
+    public TimeTextView(Context context, boolean isCenterView, Bundle textSize) {
         super(context);
         setupView(isCenterView, textSize);
     }
@@ -33,14 +35,14 @@ public class TimeTextView extends TextView implements TimeView {
      * @param isCenterView true if the element is in the center of the scrollLayout
      * @param textSize textSize in dps
      */
-    protected void setupView(boolean isCenterView, int textSize) {
+    protected void setupView(boolean isCenterView, Bundle textSize) {
         setGravity(Gravity.CENTER);
-        setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
+        setTextSize(textSize.getFloat(Util.PRIMARY_TEXT_SIZE));
         if (isCenterView) {
             setTypeface(Typeface.DEFAULT_BOLD);
-            setTextColor(0xFF333333);
+            setTextColor(textSize.getInt(Util.PRIMARY_TEXT_COLOR_BOLD));
         } else {
-            setTextColor(0xFF666666);
+            setTextColor(textSize.getInt(Util.PRIMARY_TEXT_COLOR));
         }
     }
 

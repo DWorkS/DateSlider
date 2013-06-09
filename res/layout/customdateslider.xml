@@ -25,6 +25,4 @@
         app:labelerClass="dev.dworks.widgets.DateSlider.labeler.DayLabeler"
         app:labelerFormat="%tA" />
 
-    <include layout="@layout/dialogbuttons" />
-
 </dev.dworks.widgets.DateSlider.SliderContainer>

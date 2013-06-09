@@ -3,7 +3,9 @@ package dev.dworks.widgets.DateSlider.timeview;
 import java.util.Calendar;
 
 import android.content.Context;
+import android.os.Bundle;
 import dev.dworks.widgets.DateSlider.TimeObject;
+import dev.dworks.widgets.DateSlider.labeler.Util;
 
 /**
  * This is a subclass of the TimeLayoutView that represents a day. It uses
@@ -12,6 +14,7 @@ import dev.dworks.widgets.DateSlider.TimeObject;
 public class DayTimeLayoutView extends TimeLayoutView {
 
     protected boolean isSunday=false;
+    protected Bundle bundle;
 
     /**
      * Constructor
@@ -21,9 +24,9 @@ public class DayTimeLayoutView extends TimeLayoutView {
      * @param bottomTextSize	text size of the bottom TextView in dps
      * @param lineHeight	LineHeight of the top TextView
      */
-    public DayTimeLayoutView(Context context, boolean isCenterView,
-            int topTextSize, int bottomTextSize, float lineHeight) {
-        super(context, isCenterView, topTextSize, bottomTextSize, lineHeight);
+    public DayTimeLayoutView(Context context, boolean isCenterView, Bundle bundle) {
+        super(context, isCenterView, bundle);
+    	this.bundle = bundle;
     }
 
     @Override
@@ -55,18 +58,18 @@ public class DayTimeLayoutView extends TimeLayoutView {
         }
     }
 
-
     /**
      * this method is called when the current View takes no Sunday as time unit
      */
     protected void colorMeWorkday() {
     	if (isOutOfBounds) return;
         if (isCenter) {
-            topView.setTextColor(0xFF333333);
-            bottomView.setTextColor(0xFF444444);
-        } else {
-            topView.setTextColor(0xFF666666);
-            bottomView.setTextColor(0xFF666666);
+            bottomView.setTextColor(bundle.getInt(Util.SECONDARY_TEXT_COLOR_BOLD));
+            topView.setTextColor(bundle.getInt(Util.PRIMARY_TEXT_COLOR_BOLD));
+        }
+        else {
+            bottomView.setTextColor(bundle.getInt(Util.SECONDARY_TEXT_COLOR));
+            topView.setTextColor(bundle.getInt(Util.PRIMARY_TEXT_COLOR));
         }
     }
 
@@ -82,5 +85,4 @@ public class DayTimeLayoutView extends TimeLayoutView {
             colorMeWorkday();
         }
     }
-
 }

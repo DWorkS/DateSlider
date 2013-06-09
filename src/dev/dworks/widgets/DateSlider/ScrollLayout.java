@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
@@ -36,6 +37,8 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 import dev.dworks.widgets.DateSlider.labeler.Labeler;
+import dev.dworks.widgets.DateSlider.labeler.Util;
+import dev.dworks.widgets.DateSlider.timeview.TextParams;
 import dev.dworks.widgets.DateSlider.timeview.TimeView;
 
 /**
@@ -94,10 +97,21 @@ public class ScrollLayout extends LinearLayout {
     private Labeler mLabeler;
     private OnScrollListener listener;
     private TimeView mCenterView;
+    private int mTheme = -1;
+
+	private int mTextColor;
+
+	private float mPrimaryTextSize;
+	private int mPrimaryTextColor;
+	private int mPrimaryTextColorBold;
+	private float mSecondaryTextSize;
+	private int mSecondaryTextColor;
+	private int mSecondaryTextColorBold;
+	private float mLineHeight;
 
     public ScrollLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.setWillNotDraw(false);
+
         rightShadow = getContext().getResources().getDrawable(R.drawable.right_shadow);
         leftShadow = getContext().getResources().getDrawable(R.drawable.left_shadow);
         mScroller = new Scroller(getContext());
@@ -137,8 +151,55 @@ public class ScrollLayout extends LinearLayout {
                 mLabeler.getPreferredViewWidth(context));
         objHeight = a.getDimensionPixelSize(R.styleable.DateSlider_childHeight,
                 mLabeler.getPreferredViewHeight(context));
+        mTextColor = getResources().getColor(R.color.dialog_text_color_holo_dark);
 
+        mPrimaryTextSize = getResources().getDimension(R.dimen.default_primary_text_size);
+        mPrimaryTextColor =  getResources().getColor(R.color.default_primary_text_color_dark);
+        mPrimaryTextColorBold = getResources().getColor(R.color.default_primary_text_bold_color_dark);
+        
+        mSecondaryTextSize = getResources().getDimension(R.dimen.default_secondary_text_size);
+        mSecondaryTextColor = getResources().getColor(R.color.default_secondary_text_color_dark);
+        mSecondaryTextColorBold = getResources().getColor(R.color.default_secondary_text_bold_color_dark);
+        
+        mLineHeight = Float.parseFloat(a.getResources().getString(R.dimen.line_height));
         a.recycle();
+        setWillNotDraw(false);
+    }
+    
+    public void setTheme(int themeResId) {
+        mTheme = themeResId;
+        if (mTheme != -1) {
+            TypedArray a = getContext().obtainStyledAttributes(themeResId, R.styleable.PickersDialogFragment);
+
+            mTextColor = a.getResources().getColor(R.styleable.PickersDialogFragment_bpTextColor);
+            mPrimaryTextSize = a.getResources().getDimension(R.styleable.PickersDialogFragment_primaryTextSize);
+            mPrimaryTextColor = a.getResources().getColor(R.styleable.PickersDialogFragment_primaryTextColor);
+            mPrimaryTextColorBold = a.getResources().getColor(R.styleable.PickersDialogFragment_primaryTextColorBold);
+            
+            mSecondaryTextSize = a.getResources().getDimension(R.styleable.PickersDialogFragment_secondaryTextSize);
+            mSecondaryTextColor = a.getResources().getColor(R.styleable.PickersDialogFragment_secondaryTextColor);
+            mSecondaryTextColorBold = a.getResources().getColor(R.styleable.PickersDialogFragment_secondaryTextColorBold);
+            
+            mLineHeight = a.getFloat(R.styleable.PickersDialogFragment_lineHeight, 0.8f);
+            
+            rightShadow = a.getResources().getDrawable(R.styleable.PickersDialogFragment_shadowRight);
+            leftShadow = a.getResources().getDrawable(R.styleable.PickersDialogFragment_shadowLeft);
+            a.recycle();
+        }
+
+        restyleViews();
+    }
+
+    private void restyleViews() {
+/*        for (Button month : mMonths) {
+            if (month != null) {
+                month.setTextColor(mTextColor);
+                month.setBackgroundResource(mKeyBackgroundResId);
+            }
+        }
+        if (mEnteredDate != null) {
+            mEnteredDate.setTheme(mTheme);
+        }*/
     }
 
     @Override
@@ -171,9 +232,19 @@ public class ScrollLayout extends LinearLayout {
         removeAllViews();
 
         // Now add all of the child views, making sure to make the center view as such.
+        Bundle bundle = new Bundle();
+        bundle.putFloat(Util.PRIMARY_TEXT_SIZE, mPrimaryTextSize);
+        bundle.putInt(Util.PRIMARY_TEXT_COLOR, mPrimaryTextColor);
+        bundle.putInt(Util.PRIMARY_TEXT_COLOR_BOLD, mPrimaryTextColorBold);
+        
+        bundle.putFloat(Util.SECONDARY_TEXT_SIZE, mSecondaryTextSize);
+        bundle.putInt(Util.SECONDARY_TEXT_COLOR, mSecondaryTextColor);
+        bundle.putInt(Util.SECONDARY_TEXT_COLOR_BOLD, mSecondaryTextColorBold);
+        bundle.putFloat(Util.LINE_HEIGHT, mLineHeight);
+        
         for (int i = 0; i < childCount; i++) {
             LayoutParams lp = new LayoutParams(objWidth, objHeight);
-            TimeView ttv = mLabeler.createView(getContext(), i == centerIndex);
+            TimeView ttv = mLabeler.createView(getContext(), i == centerIndex, bundle);
             addView((View)ttv, lp);
         }
 

@@ -3,7 +3,10 @@ package dev.dworks.widgets.DateSlider.labeler;
 import java.util.Calendar;
 
 import android.content.Context;
+import android.os.Bundle;
 import dev.dworks.widgets.DateSlider.TimeObject;
+import dev.dworks.widgets.DateSlider.timeview.TextParams;
+import dev.dworks.widgets.DateSlider.timeview.TimeLayoutView;
 import dev.dworks.widgets.DateSlider.timeview.TimeTextView;
 import dev.dworks.widgets.DateSlider.timeview.TimeView;
 
@@ -54,8 +57,8 @@ public abstract class Labeler {
      * @param isCenterView is true when the view is the central view
      * @return The new unpopulated TimeView object
      */
-    public TimeView createView(Context context, boolean isCenterView) {
-        return new TimeTextView(context, isCenterView, 25);
+    public TimeView createView(Context context, boolean isCenterView, Bundle bundle) {
+        return new TimeTextView(context, isCenterView, bundle);
     }
 
     /**

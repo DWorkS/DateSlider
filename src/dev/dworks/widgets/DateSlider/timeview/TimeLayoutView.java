@@ -2,11 +2,13 @@ package dev.dworks.widgets.DateSlider.timeview;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dev.dworks.widgets.DateSlider.TimeObject;
+import dev.dworks.widgets.DateSlider.labeler.Util;
 
 /**
  * This is a more complex implementation of the TimeView consisting of a LinearLayout with
@@ -30,9 +32,9 @@ public class TimeLayoutView extends LinearLayout implements TimeView {
      * @param bottomTextSize	text size of the bottom TextView in dps
      * @param lineHeight	LineHeight of the top TextView
      */
-    public TimeLayoutView(Context context, boolean isCenterView, int topTextSize, int bottomTextSize, float lineHeight) {
+    public TimeLayoutView(Context context, boolean isCenterView, Bundle bundle) {
         super(context);
-        setupView(context, isCenterView, topTextSize, bottomTextSize, lineHeight);
+        setupView(context, isCenterView, bundle);
     }
 
     /**
@@ -43,30 +45,29 @@ public class TimeLayoutView extends LinearLayout implements TimeView {
      * @param bottomTextSize	text size of the bottom TextView in dps
      * @param lineHeight	LineHeight of the top TextView
      */
-    protected void setupView(Context context, boolean isCenterView, int topTextSize, int bottomTextSize, float lineHeight) {
+    protected void setupView(Context context, boolean isCenterView, Bundle bundle) {
         setOrientation(VERTICAL);
         topView = new TextView(context);
         topView.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);
-        topView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, topTextSize);
+        topView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, bundle.getFloat(Util.PRIMARY_TEXT_SIZE));
         bottomView = new TextView(context);
         bottomView.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.TOP);
-        bottomView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, bottomTextSize);
-        topView.setLineSpacing(0, lineHeight);
+        bottomView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, bundle.getFloat(Util.SECONDARY_TEXT_SIZE));
+        topView.setLineSpacing(0, bundle.getFloat(Util.LINE_HEIGHT));
         if (isCenterView) {
             isCenter = true;
             topView.setTypeface(Typeface.DEFAULT_BOLD);
-            topView.setTextColor(0xFF333333);
+            topView.setTextColor(bundle.getInt(Util.PRIMARY_TEXT_COLOR_BOLD));
             bottomView.setTypeface(Typeface.DEFAULT_BOLD);
-            bottomView.setTextColor(0xFF444444);
-            topView.setPadding(0, 5-(int)(topTextSize/15.0), 0, 0);
+            bottomView.setTextColor(bundle.getInt(Util.SECONDARY_TEXT_COLOR_BOLD));
+            //topView.setPadding(0, 5-(int)(bundle.getInt(Util.PRIMARY_TEXT_SIZE)/15.0), 0, 0);
         } else {
             topView.setPadding(0, 5, 0, 0);
-            topView.setTextColor(0xFF666666);
-            bottomView.setTextColor(0xFF666666);
+            topView.setTextColor(bundle.getInt(Util.PRIMARY_TEXT_COLOR));
+            bottomView.setTextColor(bundle.getInt(Util.SECONDARY_TEXT_COLOR));
         }
         addView(topView);
         addView(bottomView);
-
     }
 
     

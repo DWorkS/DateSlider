@@ -10,7 +10,15 @@ import dev.dworks.widgets.DateSlider.TimeObject;
  * and return the result as a Calendar, and get*() objects that take a
  * Calendar object and a format string and produce the appropriate TimeObject.
  */
-class Util {
+public class Util {
+	public static final String PRIMARY_TEXT_SIZE = "primary_text_size";
+	public static final String PRIMARY_TEXT_COLOR = "primary_text_color";
+	public static final String PRIMARY_TEXT_COLOR_BOLD = "primary_text_color_bold";
+	public static final String SECONDARY_TEXT_SIZE = "secondary_text_size";
+	public static final String SECONDARY_TEXT_COLOR = "secondary_text_color";
+	public static final String SECONDARY_TEXT_COLOR_BOLD = "secondary_text_color_bold";
+	public static final String LINE_HEIGHT = "line_height";
+	
     public static Calendar addYears(long time, int years) {
         return add(time, years, Calendar.YEAR);
     }

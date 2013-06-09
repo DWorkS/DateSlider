@@ -17,10 +17,34 @@ public class SliderContainer extends LinearLayout {
     private Calendar mTime = null;
     private OnTimeChangeListener mOnTimeChangeListener;
     private int minuteInterval;
+	private int mTheme = -1;
 
     public SliderContainer(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(VERTICAL);
+    }
+    
+    public void setTheme(int themeResId) {
+        mTheme  = themeResId;
+        if (mTheme != -1) {
+/*            TypedArray a = getContext().obtainStyledAttributes(themeResId, R.styleable.BetterPickersDialogFragment);
+
+            mDeleteDrawableSrcResId = a.getResourceId(R.styleable.BetterPickersDialogFragment_bpDeleteIcon,
+                    mDeleteDrawableSrcResId);*/
+        }
+        restyleViews();
+    }
+
+    private void restyleViews() {
+/*        for (Button month : mMonths) {
+            if (month != null) {
+                month.setTextColor(mTextColor);
+                month.setBackgroundResource(mKeyBackgroundResId);
+            }
+        }
+        if (mEnteredDate != null) {
+            mEnteredDate.setTheme(mTheme);
+        }*/
     }
 
     @Override
@@ -29,12 +53,13 @@ public class SliderContainer extends LinearLayout {
         for (int i = 0; i < childCount; i++) {
             View v = getChildAt(i);
             if (v instanceof ScrollLayout) {
-                final ScrollLayout sl = (ScrollLayout)v;
-                sl.setOnScrollListener(
+                final ScrollLayout scrollLayout = (ScrollLayout)v;
+                scrollLayout.setTheme(mTheme);
+                scrollLayout.setOnScrollListener(
                         new ScrollLayout.OnScrollListener() {
                             public void onScroll(long x) {
                                 mTime.setTimeInMillis(x);
-                                arrangeScrollers(sl);
+                                arrangeScrollers(scrollLayout);
                             }
                         });
             }
@@ -59,8 +84,7 @@ public class SliderContainer extends LinearLayout {
      */
     public Calendar getTime() {
         return mTime;
-    }
-    
+    }    
     
     /**
      * sets the minimum date that the scroller can scroll

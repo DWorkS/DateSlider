@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ThemeDefault" parent="android:Theme.Holo.Light">
+        <item name="android:divider">@drawable/list_divider_holo_dark</item>
+    </style>
+
+    <style name="PickersDialogFragment">
+        <item name="bpDialogBackground">@drawable/dialog_full_holo_dark</item>
+        <item name="bpTitleColor">@color/dialog_text_color_holo_dark</item>
+        <item name="bpTextColor">@color/dialog_text_color_holo_dark</item>
+        <item name="bpKeyBackground">@drawable/key_background_dark</item>
+        <item name="bpButtonBackground">@drawable/button_background_dark</item>
+        <item name="bpTitleDividerColor">@color/default_keyboard_indicator_color_dark</item>
+        <item name="bpDividerColor">@color/default_divider_color_dark</item>
+        <item name="bpKeyboardIndicatorColor">@color/default_keyboard_indicator_color_dark</item>
+        
+        <item name="shadowLeft">@drawable/left_shadow</item>
+        <item name="shadowRight">@drawable/right_shadow</item>
+        <item name="android:divider">@drawable/list_divider_holo_dark</item>
+        <item name="primaryTextSize">@dimen/default_primary_text_size</item>
+        <item name="primaryTextColor">@color/default_primary_text_color_dark</item>
+        <item name="primaryTextColorBold">@color/default_primary_text_bold_color_dark</item>
+        <item name="secondaryTextSize">@dimen/default_secondary_text_size</item>
+        <item name="secondaryTextColor">@color/default_secondary_text_color_dark</item>
+        <item name="secondaryTextColorBold">@color/default_secondary_text_bold_color_dark</item>
+        <item name="lineHeight">@dimen/line_height</item>                
+    </style>
+
+    <style name="PickersDialogFragment.Light">
+        <item name="bpDialogBackground">@drawable/dialog_full_holo_light</item>
+        <item name="bpTitleColor">@color/dialog_text_color_holo_light</item>
+        <item name="bpTextColor">@color/dialog_text_color_holo_light</item>
+        <item name="bpKeyBackground">@drawable/key_background_light</item>
+        <item name="bpButtonBackground">@drawable/button_background_light</item>
+        <item name="bpTitleDividerColor">@color/default_keyboard_indicator_color_dark</item>
+        <item name="bpDividerColor">@color/default_divider_color_light</item>
+        <item name="bpKeyboardIndicatorColor">@color/default_keyboard_indicator_color_light</item>
+        
+        <item name="shadowLeft">@drawable/left_shadow_light</item>
+        <item name="shadowRight">@drawable/right_shadow_light</item>
+        <item name="android:divider">@drawable/list_divider_holo_dark</item>
+        <item name="primaryTextSize">@dimen/default_primary_text_size</item>
+        <item name="primaryTextColor">@color/default_primary_text_color_light</item>
+        <item name="primaryTextColorBold">@color/default_primary_text_bold_color_light</item>
+        <item name="secondaryTextSize">@dimen/default_secondary_text_size</item>
+        <item name="secondaryTextColor">@color/default_secondary_text_color_light</item>
+        <item name="secondaryTextColorBold">@color/default_secondary_text_bold_color_light</item>
+        <item name="lineHeight">@dimen/line_height</item>            
+    </style>
+
+</resources>

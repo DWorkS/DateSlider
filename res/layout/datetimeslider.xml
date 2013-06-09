@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res/dev.dworks.widgets.DateSlider"
     android:id="@+id/dateSliderContainer"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:showDividers="middle" >
 
     <dev.dworks.widgets.DateSlider.ScrollLayout
@@ -23,7 +23,5 @@
         app:childWidth="80dp"
         app:labelerClass="dev.dworks.widgets.DateSlider.labeler.TimeLabeler"
         app:labelerFormat="%tR" />
-
-    <include layout="@layout/dialogbuttons" />
 
 </dev.dworks.widgets.DateSlider.SliderContainer>

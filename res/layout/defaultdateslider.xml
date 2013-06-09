@@ -1,35 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<dev.dworks.widgets.DateSlider.SliderContainer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/dev.dworks.widgets.DateSlider"
+    android:id="@+id/dateSliderContainer"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:showDividers="middle" >
 
-    <include layout="@layout/dialogtitle" />
-
-    <dev.dworks.widgets.DateSlider.SliderContainer
-        android:id="@+id/dateSliderContainer"
+    <dev.dworks.widgets.DateSlider.ScrollLayout
+        style="@style/Scroller"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:showDividers="middle" >
+        app:childWidth="90dp"
+        app:labelerClass="dev.dworks.widgets.DateSlider.labeler.MonthYearLabeler"
+        app:labelerFormat="%tb %tY" />
 
-        <dev.dworks.widgets.DateSlider.ScrollLayout
-            style="@style/Scroller"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            app:childWidth="90dp"
-            app:labelerClass="dev.dworks.widgets.DateSlider.labeler.MonthYearLabeler"
-            app:labelerFormat="%tb %tY" />
+    <dev.dworks.widgets.DateSlider.ScrollLayout
+        style="@style/Scroller"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:childWidth="45dp"
+        app:labelerClass="dev.dworks.widgets.DateSlider.labeler.DayDateLabeler"
+        app:labelerFormat="%td %ta" />
 
-        <dev.dworks.widgets.DateSlider.ScrollLayout
-            style="@style/Scroller"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            app:childWidth="45dp"
-            app:labelerClass="dev.dworks.widgets.DateSlider.labeler.DayDateLabeler"
-            app:labelerFormat="%td %ta" />
-
-        <include layout="@layout/dialogbuttons" />
-    </dev.dworks.widgets.DateSlider.SliderContainer>
-
-</LinearLayout>
+</dev.dworks.widgets.DateSlider.SliderContainer>

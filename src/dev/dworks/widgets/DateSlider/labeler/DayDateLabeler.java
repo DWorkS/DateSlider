@@ -1,6 +1,7 @@
 package dev.dworks.widgets.DateSlider.labeler;
 
 import android.content.Context;
+import android.os.Bundle;
 import dev.dworks.widgets.DateSlider.timeview.DayTimeLayoutView;
 import dev.dworks.widgets.DateSlider.timeview.TimeView;
 
@@ -20,7 +21,8 @@ public class DayDateLabeler extends DayLabeler {
     }
 
     @Override
-    public TimeView createView(Context context, boolean isCenterView) {
-        return new DayTimeLayoutView(context, isCenterView, 30, 8, 0.8f);
+    public TimeView createView(Context context, boolean isCenterView, Bundle bundle) {
+        return new DayTimeLayoutView(context, isCenterView, bundle);
+        		//30, 8, 0.8f);
     }
 }

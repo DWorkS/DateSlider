@@ -18,6 +18,4 @@
         app:labelerClass="dev.dworks.widgets.DateSlider.labeler.MinuteLabeler"
         app:labelerFormat="%tM" />
 
-    <include layout="@layout/dialogbuttons" />
-
 </dev.dworks.widgets.DateSlider.SliderContainer>

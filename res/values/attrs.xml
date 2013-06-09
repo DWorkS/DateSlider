@@ -14,5 +14,27 @@
         <attr name="android:dividerPadding" />
         <attr name="android:showDividers" />
     </declare-styleable>
+    <declare-styleable name="PickersDialogFragment">
+        <attr name="bpTextColor" format="reference" />
+        <attr name="bpTitleColor" format="reference" />
+        <attr name="bpDeleteIcon" format="reference" />
+        <attr name="bpCheckIcon" format="reference" />
+        <attr name="bpKeyBackground" format="reference" />
+        <attr name="bpButtonBackground" format="reference" />
+        <attr name="bpTitleDividerColor" format="color" />
+        <attr name="bpDividerColor" format="color" />
+        <attr name="bpKeyboardIndicatorColor" format="color" />
+        <attr name="bpDialogBackground" format="reference" />
+        
+        <attr name="shadowLeft" format="reference" />
+        <attr name="shadowRight" format="reference" />
+        <attr name="primaryTextSize" format="dimension" />
+        <attr name="primaryTextColor" format="color" />
+        <attr name="primaryTextColorBold" format="color" />
+        <attr name="secondaryTextSize" format="dimension" />
+        <attr name="secondaryTextColor" format="color" />
+        <attr name="secondaryTextColorBold" format="color" />
+        <attr name="lineHeight" format="float" />
+    </declare-styleable>
 
 </resources>

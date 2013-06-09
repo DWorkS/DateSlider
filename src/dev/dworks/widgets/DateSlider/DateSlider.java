@@ -102,11 +102,11 @@ public class DateSlider extends Dialog {
         if (minTime!=null) mContainer.setMinTime(minTime);
         if (maxTime!=null) mContainer.setMaxTime(maxTime);
 
-        Button okButton = (Button) findViewById(R.id.dateSliderOkButton);
-        okButton.setOnClickListener(okButtonClickListener);
+        //Button okButton = (Button) findViewById(R.id.dateSliderOkButton);
+        //okButton.setOnClickListener(okButtonClickListener);
 
-        Button cancelButton = (Button) findViewById(R.id.dateSliderCancelButton);
-        cancelButton.setOnClickListener(cancelButtonClickListener);
+        //Button cancelButton = (Button) findViewById(R.id.dateSliderCancelButton);
+        //cancelButton.setOnClickListener(cancelButtonClickListener);
     }
 
     public void setTime(Calendar c) {
